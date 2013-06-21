@@ -21,7 +21,7 @@ class Sorter():
     A[1] left child of root
     A[2] right child of root
     In general, for heap node at index i,
-    A[(i-1)/2] parent node index
+    A[(i-1)//2] parent node index, using integer division to truncate
     A[2i+1] left child
     A[2i+2] right child
 
@@ -54,3 +54,10 @@ class Sorter():
         if len(heap_list) >= ((2*index + 1) + 1):
             left_index = (2*index + 1)
         return left_index
+
+    def parent_index(heap_list, index):
+        parent_index = None
+        if index >  0:
+            # use integer division to truncate
+            parent_index = (index - 1)//2
+        return parent_index

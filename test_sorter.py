@@ -81,4 +81,32 @@ class TestSorter(unittest.TestCase):
                                                                                       test_data[expected_result_index],
                                                                                       result))
 
+    def test_parent_index(self):
+
+        list_index = 0
+        # in test_datas, the index that contains the list_index
+        list_index_index = 1
+        expected_result_index = 2
+
+        test_datas = [
+            [[3], 0, None],
+            [[3, 2, 1], 0, None],
+            [[3, 2, 1], 1, 0],
+            [[3, 2, 1], 2, 0],
+            [[38, 23, 35, 10, 20, 17, 12], 0, None],
+            [[38, 23, 35, 10, 20, 17, 12], 5, 2],
+            [[38, 23, 35, 10, 20, 17, 12], 6, 2],
+        ]
+
+        for test_data in test_datas:
+            # module sorter, class Sorter, method right_child_index()
+            result = sorter.Sorter.parent_index(test_data[list_index],
+                                                test_data[list_index_index])
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'parent_index({}, {}) expected {} but got {}'.format(test_data[list_index],
+                                                                                  test_data[list_index_index],
+                                                                                  test_data[expected_result_index],
+                                                                                  result))
+
 if __name__ == "__main__": unittest.main()
