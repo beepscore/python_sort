@@ -40,3 +40,8 @@ class Sorter():
         else:
             return [3, 2, 1]
 
+    def left_child_index(heap_list, index):
+        left_index = None
+        if len(heap_list) >= ((2*index + 1) + 1):
+            left_index = (2*index + 1)
+        return left_index

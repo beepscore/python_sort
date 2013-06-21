@@ -27,4 +27,30 @@ class TestSorter(unittest.TestCase):
                                                                         test_data[expected_result_index],
                                                                         result))
 
+    def test_left_child_index(self):
+
+        list_index = 0
+        # in test_datas, the index that contains the list_index
+        list_index_index = 1
+        expected_result_index = 2
+
+        test_datas = [
+            [[3], 0, None],
+            [[3, 2, 1], 0, 1],
+            [[3, 2, 1], 1, None],
+            [[38, 23, 35, 10, 20, 17, 6], 0, 1],
+            [[38, 23, 35, 10, 20, 17, 6], 1, 3],
+            [[38, 23, 35, 10, 20, 17, 6], 2, 5],
+        ]
+
+        for test_data in test_datas:
+            # module sorter, class Sorter, method left_child_index()
+            result = sorter.Sorter.left_child_index(test_data[list_index],
+                                                    test_data[list_index_index])
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'left_child_index({}, {}) expected {} but got {}'.format(test_data[list_index],
+                                                                                      test_data[list_index_index],
+                                                                                      test_data[expected_result_index],
+                                                                                      result))
 if __name__ == "__main__": unittest.main()
