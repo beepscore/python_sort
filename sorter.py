@@ -24,11 +24,16 @@ class Sorter():
 
     '''
 
-
     def __init__(self):
         pass
 
+    #
     def heapify(almost_max_heap):
+        '''
+        almost_max_heap is a list that almost represents a max heap, but one node is wrong.
+        returns a list representing a max heap.
+
+        '''
         # write simplest code that will pass test
         if 1 >= len(almost_max_heap):
             return almost_max_heap
