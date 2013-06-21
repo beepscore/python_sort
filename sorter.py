@@ -57,7 +57,7 @@ class Sorter():
 
     def parent_index(heap_list, index):
         parent_index = None
-        if index >  0:
+        if (index >  0) and (index < len(heap_list)):
             # use integer division to truncate
             parent_index = (index - 1)//2
         return parent_index
