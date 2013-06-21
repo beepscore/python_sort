@@ -43,6 +43,12 @@ class Sorter():
         else:
             return [3, 2, 1]
 
+    def right_child_index(heap_list, index):
+        right_index = None
+        if len(heap_list) >= ((2*index + 2) + 1):
+            right_index = (2*index + 2)
+        return right_index
+
     def left_child_index(heap_list, index):
         left_index = None
         if len(heap_list) >= ((2*index + 1) + 1):
