@@ -3,7 +3,27 @@
 class Sorter():
     '''
     Sort a list using heap sort.
+
+    To represent a heap as an array, map node positions to array index
+    For a zero based array,
+
+                0
+              /   \
+             /     \
+            1       2
+           / \     / \
+          3   4   5   6
+
+    A[0] root
+    A[1] left child of root
+    A[2] right child of root
+    In general, for heap node at index i,
+    A[(i-1)/2] parent node index
+    A[2i+1] left child
+    A[2i+2] right child
+
     '''
+
 
     def __init__(self):
         pass
