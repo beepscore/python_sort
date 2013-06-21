@@ -4,6 +4,9 @@ class Sorter():
     '''
     Sort a list using heap sort.
 
+    This class could be written in a more object oriented way e.g. heapA.nodeB.left_child().
+    Instead use array (Python list) to allow for easier conversion to other mappings.
+
     To represent a heap as an array, map node positions to array index
     For a zero based array,
 
