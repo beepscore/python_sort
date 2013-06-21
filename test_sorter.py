@@ -9,6 +9,7 @@ class TestSorter(unittest.TestCase):
     expected_result_index = 1
 
     test_datas = [
+        [[5], [5]],
         [[2, 3, 1], [3, 2, 1]],
     ]
 
