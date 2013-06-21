@@ -1,15 +1,36 @@
 # Reference
 # https://github.com/github/gitignore
+# http://help.github.com/ignore-files/
 
-# from shanesbrain ref
-# old skool
-.svn
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
 
-# osx noise
-.DS_Store
-*.swp
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
 
-*.py[co]
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+
+*.py[cod]
+
+# C extensions
+*.so
 
 # Packages
 *.egg
@@ -20,11 +41,12 @@ eggs
 parts
 bin
 var
-
-###
-
+sdist
 develop-eggs
 .installed.cfg
+lib
+lib64
+__pycache__
 
 # Installer logs
 pip-log.txt
@@ -32,9 +54,12 @@ pip-log.txt
 # Unit test / coverage reports
 .coverage
 .tox
+nosetests.xml
 
-#Translations
+# Translations
 *.mo
 
-#Mr Developer
+# Mr Developer
 .mr.developer.cfg
+.project
+.pydevproject
