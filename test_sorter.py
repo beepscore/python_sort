@@ -146,6 +146,7 @@ class TestSorter(unittest.TestCase):
             [[23, 38, 35, 10, 20, 17, 12], 0, True],
             [[23, 38, 35, 10, 20, 17, 12], 1, False],
             [[23, 38, 35, 10, 20, 17, 12], 2, False],
+            [[49, 38, 35, 10, 20, 37], 2, True],
         ]
 
         for test_data in test_datas:
