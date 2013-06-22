@@ -57,7 +57,21 @@ class Sorter():
         heap_list[indexA], heap_list[indexB] = heap_list[indexB], heap_list[indexA]
         return heap_list
 
-    def heapify(self, almost_max_heap):
+    def node_has_a_bigger_child(self, heap_list, index):
+        '''
+        returns True if node at index has a bigger child
+
+        '''
+        left_child_index = self.left_child_index(heap_list, index)
+        right_child_index = self.right_child_index(heap_list, index)
+
+        if ((left_child_index and (heap_list[index] < heap_list[left_child_index])) or
+            (right_child_index and (heap_list[index] < heap_list[right_child_index]))):
+            return True;
+        else:
+            return False;
+
+    def heapify(self, almost_max_heap, index):
         '''
         almost_max_heap is a list that almost represents a max heap, but one node is wrong.
         returns a list representing a max heap.
