@@ -166,7 +166,7 @@ class TestSorter(unittest.TestCase):
         expected_result_index = 1
 
         test_datas = [
-            #[[], True],
+            [[], True],
             [[3], True],
             [[3, 2], True],
             [[3, 2, 1], True],
