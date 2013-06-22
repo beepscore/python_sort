@@ -6,7 +6,8 @@ import unittest
 class TestSorter(unittest.TestCase):
 
     def setUp(self):
-        pass
+        # instantiate object from module sorter, class Sorter
+        self.sorter = sorter.Sorter()
 
     def test_heapify(self):
 
@@ -19,8 +20,7 @@ class TestSorter(unittest.TestCase):
         ]
 
         for test_data in test_datas:
-            # module sorter, class Sorter, method heapify()
-            result = sorter.Sorter.heapify(test_data[almost_heap_index])
+            result = self.sorter.heapify(test_data[almost_heap_index])
             self.assertEqual(test_data[expected_result_index],
                             result,
                             'heapify({}) expected {} but got {}'.format(test_data[almost_heap_index],
@@ -48,9 +48,8 @@ class TestSorter(unittest.TestCase):
         ]
 
         for test_data in test_datas:
-            # module sorter, class Sorter, method right_child_index()
-            result = sorter.Sorter.right_child_index(test_data[list_index],
-                                                    test_data[list_index_index])
+            result = self.sorter.right_child_index(test_data[list_index],
+                                                   test_data[list_index_index])
             self.assertEqual(test_data[expected_result_index],
                              result,
                              'right_child_index({}, {}) expected {} but got {}'.format(test_data[list_index],
@@ -82,9 +81,8 @@ class TestSorter(unittest.TestCase):
         ]
 
         for test_data in test_datas:
-            # module sorter, class Sorter, method left_child_index()
-            result = sorter.Sorter.left_child_index(test_data[list_index],
-                                                    test_data[list_index_index])
+            result = self.sorter.left_child_index(test_data[list_index],
+                                                  test_data[list_index_index])
             self.assertEqual(test_data[expected_result_index],
                              result,
                              'left_child_index({}, {}) expected {} but got {}'.format(test_data[list_index],
@@ -117,9 +115,8 @@ class TestSorter(unittest.TestCase):
         ]
 
         for test_data in test_datas:
-            # module sorter, class Sorter, method right_child_index()
-            result = sorter.Sorter.parent_index(test_data[list_index],
-                                                test_data[list_index_index])
+            result = self.sorter.parent_index(test_data[list_index],
+                                              test_data[list_index_index])
             self.assertEqual(test_data[expected_result_index],
                              result,
                              'parent_index({}, {}) expected {} but got {}'.format(test_data[list_index],
