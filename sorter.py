@@ -66,3 +66,10 @@ class Sorter():
             # use integer division to truncate
             parent_index = (index - 1)//2
         return parent_index
+
+    def swap_list_elements_at_indices(self, heap_list, indexA, indexB):
+        temp = heap_list[indexA]
+        heap_list[indexA] = heap_list[indexB]
+        heap_list[indexB] = temp
+        return heap_list
+
