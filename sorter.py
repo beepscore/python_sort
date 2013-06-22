@@ -76,10 +76,10 @@ class Sorter():
             return False;
 
     def index_of_biggest_child(self, heap_list, index):
-        biggest_child_index = None
         left_child_index = self.left_child_index(heap_list, index)
         right_child_index = self.right_child_index(heap_list, index)
 
+        biggest_child_index = None
         if (not left_child_index and not right_child_index):
             biggest_child_index = None
         elif (left_child_index and not right_child_index):
@@ -87,6 +87,7 @@ class Sorter():
         elif (right_child_index and not left_child_index):
             biggest_child_index = right_child_index
         else:
+            # index has two children
             if (heap_list[left_child_index] > heap_list[right_child_index]):
                 biggest_child_index = left_child_index
             else:
