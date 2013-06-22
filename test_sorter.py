@@ -160,6 +160,41 @@ class TestSorter(unittest.TestCase):
                                                                                                test_data[expected_result_index],
                                                                                                result))
 
+    def test_is_max_heap(self):
+
+        list_index = 0
+        expected_result_index = 1
+
+        test_datas = [
+            #[[], True],
+            [[3], True],
+            [[3, 2], True],
+            [[3, 2, 1], True],
+            [[38, 23, 35, 10], True],
+            [[38, 23, 35, 10, 20], True],
+            [[38, 23, 35, 10, 20, 17], True],
+            [[38, 23, 35, 10, 20, 17, 12], True],
+            [[38, 23, 35, 10, 20, 17, 12, 8], True],
+            [[38, 23, 35, 10, 20, 17, 12, 8, 9], True],
+
+            # test with repeated values
+            [[3, 3], True],
+
+            # test non max heaps
+            [[3, 4], False],
+            [[38, 99, 35, 10, 20, 17, 12, 8, 9], False],
+            [[38, 23, 35, 10, 99, 17, 12, 8, 9], False],
+            [[38, 23, 35, 10, 20, 17, 12, 99, 9], False],
+        ]
+
+        for test_data in test_datas:
+            result = self.sorter.is_max_heap(test_data[list_index])
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'is_max_heap({}) expected {} but got {}'.format(test_data[list_index],
+                                                                             test_data[expected_result_index],
+                                                                             result))
+
     def test_node_has_a_bigger_child(self):
 
         list_index = 0

@@ -81,7 +81,6 @@ class Sorter():
         heap_list[indexA], heap_list[indexB] = heap_list[indexB], heap_list[indexA]
         return heap_list
 
-    # TODO: consider eliminate this method, just use index_of_biggest_child
     def node_has_a_bigger_child(self, heap_list, index):
         '''
         returns True if node at index has a bigger child
@@ -95,6 +94,19 @@ class Sorter():
             return True;
         else:
             return False;
+
+    def is_max_heap(self, heap_list):
+        '''
+        returns True if heap_list is a max heap.
+
+        '''
+        is_max_heap = True
+        for index, node_value in enumerate(heap_list):
+            if self.node_has_a_bigger_child(heap_list, index):
+                is_max_heap = False
+                break
+
+        return is_max_heap
 
     def index_of_biggest_child(self, heap_list, index):
         left_child_index = self.left_child_index(heap_list, index)
