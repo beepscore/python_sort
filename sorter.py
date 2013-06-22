@@ -81,6 +81,7 @@ class Sorter():
         heap_list[indexA], heap_list[indexB] = heap_list[indexB], heap_list[indexA]
         return heap_list
 
+    # TODO: consider eliminate this method, just use index_of_biggest_child
     def node_has_a_bigger_child(self, heap_list, index):
         '''
         returns True if node at index has a bigger child
