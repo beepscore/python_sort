@@ -30,24 +30,6 @@ class Sorter():
     def __init__(self):
         pass
 
-    def heapify(self, almost_max_heap):
-        '''
-        almost_max_heap is a list that almost represents a max heap, but one node is wrong.
-        returns a list representing a max heap.
-
-        '''
-        max_heap = []
-
-        # write simplest code that will pass test
-        if 1 >= len(almost_max_heap):
-            max_heap = almost_max_heap
-        else:
-            current_index = 0
-            if almost_max_heap[self.left_child_index(almost_max_heap, current_index)] > almost_max_heap[current_index]:
-                # swap_list_elements_at_indices(list, indexA, indexB)
-                pass
-
-        return max_heap
     def right_child_index(self, heap_list, index):
         right_index = None
         if len(heap_list) >= ((2*index + 2) + 1):
@@ -74,4 +56,23 @@ class Sorter():
         #heap_list[indexB] = temp
         heap_list[indexA], heap_list[indexB] = heap_list[indexB], heap_list[indexA]
         return heap_list
+
+    def heapify(self, almost_max_heap):
+        '''
+        almost_max_heap is a list that almost represents a max heap, but one node is wrong.
+        returns a list representing a max heap.
+
+        '''
+        max_heap = []
+
+        # write simplest code that will pass test
+        if 1 >= len(almost_max_heap):
+            max_heap = almost_max_heap
+        else:
+            current_index = 0
+            if almost_max_heap[self.left_child_index(almost_max_heap, current_index)] > almost_max_heap[current_index]:
+                # swap_list_elements_at_indices(list, indexA, indexB)
+                pass
+
+        return max_heap
 
