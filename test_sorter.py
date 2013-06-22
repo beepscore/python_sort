@@ -9,6 +9,30 @@ class TestSorter(unittest.TestCase):
         # instantiate object from module sorter, class Sorter
         self.sorter = sorter.Sorter()
 
+    def test_number_of_leaf_nodes(self):
+
+        list_index = 0
+        expected_result_index = 1
+
+        test_datas = [
+            [[], 0],
+            [[3], 1],
+            [[3, 2], 1],
+            [[3, 2, 1], 2],
+            [[38, 23, 35, 10], 1],
+            [[38, 23, 35, 10, 20], 2],
+            [[38, 23, 35, 10, 20, 17], 3],
+            [[38, 23, 35, 10, 20, 17, 12], 4],
+        ]
+
+        for test_data in test_datas:
+            result = self.sorter.number_of_leaf_nodes(test_data[list_index])
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'number_of_leaf_nodes({}) expected {} but got {}'.format(test_data[list_index],
+                                                                                      test_data[expected_result_index],
+                                                                                      result))
+
     def test_right_child_index(self):
 
         list_index = 0

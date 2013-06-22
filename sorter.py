@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import math
+
 class Sorter():
     '''
     Sort a list using heap sort.
@@ -29,6 +31,24 @@ class Sorter():
 
     def __init__(self):
         pass
+
+    def number_of_leaf_nodes(self, heap_list):
+        '''
+        returns number of nodes on lowest level of heap_list tree.
+        if heap_list has one node, returns 1.
+
+        '''
+        number_of_leaf_nodes = 0
+        if (None == heap_list) or (0 == len(heap_list)):
+            number_of_leaf_nodes = 0
+        else:
+            # log2 requires Python 3.3
+            # number of levels in the heap tree
+            number_of_levels = int(math.log2(len(heap_list))) + 1
+            number_of_leaf_nodes = len(heap_list) - ((2**(number_of_levels - 1)) - 1)
+            # print('heap_list {}'.format(heap_list))
+            # print('number_of_levels {} number_of_leaf_nodes {}'.format(number_of_levels, number_of_leaf_nodes))
+        return number_of_leaf_nodes
 
     def right_child_index(self, heap_list, index):
         right_index = None
