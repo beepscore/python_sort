@@ -48,8 +48,6 @@ class Sorter():
             # number of nodes in levels above lowest level
             number_of_non_leaf_nodes = ((2**(number_of_levels - 1)) - 1)
             number_of_leaf_nodes = len(heap_list) - number_of_non_leaf_nodes
-            # print('heap_list {}'.format(heap_list))
-            # print('number_of_levels {} number_of_leaf_nodes {}'.format(number_of_levels, number_of_leaf_nodes))
         return number_of_leaf_nodes
 
     def right_child_index(self, heap_list, index):
