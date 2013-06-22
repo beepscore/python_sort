@@ -49,7 +49,11 @@ class Sorter():
             parent_index = (index - 1)//2
         return parent_index
 
-    def swap_list_elements_at_indices(self, heap_list, indexA, indexB):
+    def list_elements_swapped(self, heap_list, indexA, indexB):
+        '''
+        returns a list with elements swapped
+
+        '''
         # Python can swap in one step
         #temp = heap_list[indexA]
         #heap_list[indexA] = heap_list[indexB]
@@ -98,9 +102,9 @@ class Sorter():
         '''
         if ((len(heap_list) > 1) and
             self.node_has_a_bigger_child(heap_list, index)):
-            self.swap_list_elements_at_indices(heap_list,
-                                               index,
-                                               self.index_of_biggest_child(heap_list, index))
+            self.list_elements_swapped(heap_list,
+                                       index,
+                                       self.index_of_biggest_child(heap_list, index))
 
         return heap_list
 

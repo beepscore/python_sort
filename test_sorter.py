@@ -106,7 +106,7 @@ class TestSorter(unittest.TestCase):
                                                                                   test_data[expected_result_index],
                                                                                   result))
 
-    def test_swap_list_elements_at_indices(self):
+    def test_list_elements_swapped(self):
 
         list_index = 0
         indexA_index = 1
@@ -123,16 +123,16 @@ class TestSorter(unittest.TestCase):
         ]
 
         for test_data in test_datas:
-            result = self.sorter.swap_list_elements_at_indices(test_data[list_index],
-                                                               test_data[indexA_index],
-                                                               test_data[indexB_index])
+            result = self.sorter.list_elements_swapped(test_data[list_index],
+                                                       test_data[indexA_index],
+                                                       test_data[indexB_index])
             self.assertEqual(test_data[expected_result_index],
                              result,
-                             'swap_list_elements_at_indices({}, {}, {}) expected {} but got {}'.format(test_data[list_index],
-                                                                                                       test_data[indexA_index],
-                                                                                                       test_data[indexB_index],
-                                                                                                       test_data[expected_result_index],
-                                                                                                       result))
+                             'list_elements_swapped({}, {}, {}) expected {} but got {}'.format(test_data[list_index],
+                                                                                               test_data[indexA_index],
+                                                                                               test_data[indexB_index],
+                                                                                               test_data[expected_result_index],
+                                                                                               result))
 
     def test_node_has_a_bigger_child(self):
 
