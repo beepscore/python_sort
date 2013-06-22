@@ -32,19 +32,19 @@ class Sorter():
 
     def right_child_index(self, heap_list, index):
         right_index = None
-        if len(heap_list) >= ((2*index + 2) + 1):
+        if (index != None) and len(heap_list) >= ((2*index + 2) + 1):
             right_index = (2*index + 2)
         return right_index
 
     def left_child_index(self, heap_list, index):
         left_index = None
-        if len(heap_list) >= ((2*index + 1) + 1):
+        if (index != None) and len(heap_list) >= ((2*index + 1) + 1):
             left_index = (2*index + 1)
         return left_index
 
     def parent_index(self, heap_list, index):
         parent_index = None
-        if (index >  0) and (index < len(heap_list)):
+        if (index != None) and (index >  0) and (index < len(heap_list)):
             # use integer division to truncate
             parent_index = (index - 1)//2
         return parent_index
