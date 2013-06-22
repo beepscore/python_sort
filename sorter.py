@@ -68,8 +68,10 @@ class Sorter():
         return parent_index
 
     def swap_list_elements_at_indices(self, heap_list, indexA, indexB):
-        temp = heap_list[indexA]
-        heap_list[indexA] = heap_list[indexB]
-        heap_list[indexB] = temp
+        # Python can swap in one step
+        #temp = heap_list[indexA]
+        #heap_list[indexA] = heap_list[indexB]
+        #heap_list[indexB] = temp
+        heap_list[indexA], heap_list[indexB] = heap_list[indexB], heap_list[indexA]
         return heap_list
 
