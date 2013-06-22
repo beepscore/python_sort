@@ -159,6 +159,32 @@ class TestSorter(unittest.TestCase):
                                                                                              test_data[expected_result_index],
                                                                                              result))
 
+    def test_index_of_biggest_child(self):
+
+        list_index = 0
+        # in test_datas, the index that contains the list_index
+        list_index_index = 1
+        expected_result_index = 2
+
+        test_datas = [
+            [[23], 0, None],
+            [[23, 38, 35, 10, 20, 17, 12], None, None],
+            [[23, 38, 35, 10, 20, 17, 12], 0, 1],
+            [[23, 38, 35, 10, 20, 17, 12], 1, 4],
+            [[23, 38, 35, 10, 20, 17, 12], 2, 5],
+            [[49, 38, 35, 10, 20, 37], 2, 5],
+        ]
+
+        for test_data in test_datas:
+            result = self.sorter.index_of_biggest_child(test_data[list_index],
+                                                        test_data[list_index_index])
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'index_of_biggest_child({}, {}) expected {} but got {}'.format(test_data[list_index],
+                                                                                             test_data[list_index_index],
+                                                                                             test_data[expected_result_index],
+                                                                                             result))
+
     def test_heapify(self):
 
         almost_heap_index = 0

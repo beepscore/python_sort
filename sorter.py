@@ -71,22 +71,36 @@ class Sorter():
         else:
             return False;
 
-    def heapify(self, almost_max_heap, index):
-        '''
-        almost_max_heap is a list that almost represents a max heap, but one node is wrong.
-        returns a list representing a max heap.
+    def index_of_biggest_child(self, heap_list, index):
+        biggest_child_index = None
+        left_child_index = self.left_child_index(heap_list, index)
+        right_child_index = self.right_child_index(heap_list, index)
 
-        '''
-        max_heap = []
-
-        # write simplest code that will pass test
-        if 1 >= len(almost_max_heap):
-            max_heap = almost_max_heap
+        if (not left_child_index and not right_child_index):
+            biggest_child_index = None
+        elif (left_child_index and not right_child_index):
+            biggest_child_index = left_child_index
+        elif (right_child_index and not left_child_index):
+            biggest_child_index = right_child_index
         else:
-            current_index = 0
-            if almost_max_heap[self.left_child_index(almost_max_heap, current_index)] > almost_max_heap[current_index]:
-                # swap_list_elements_at_indices(list, indexA, indexB)
-                pass
+            if (heap_list[left_child_index] > heap_list[right_child_index]):
+                biggest_child_index = left_child_index
+            else:
+                biggest_child_index = right_child_index
 
-        return max_heap
+        return biggest_child_index;
+
+    def heapify(self, heap_list, index):
+        '''
+        heap_list is a list that almost represents a max heap, but one node is wrong.
+        returns a list with node swapped
+
+        '''
+        if ((len(heap_list) > 1) and
+            self.node_has_a_bigger_child(heap_list, index)):
+            self.swap_list_elements_at_indices(heap_list,
+                                               index,
+                                               self.index_of_biggest_child(heap_list, index))
+
+        return heap_list
 
