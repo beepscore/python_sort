@@ -289,4 +289,24 @@ class TestSorter(unittest.TestCase):
                              'heapify({}, {}) expected a max heap'.format(test_data[almost_heap_index],
                                                                              test_data[start_index_index]))
 
+    def test_heap_sort(self):
+
+        heap_index = 0
+        expected_result_index = 1
+
+        test_datas = [
+            # one element
+            [[5], [5]],
+
+            #[[2, 3, 1], [1, 2, 3]],
+        ]
+
+        for test_data in test_datas:
+            result = self.sorter.heap_sort(test_data[heap_index])
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'heap_sort({}) expected {} but got {}'.format(test_data[heap_index],
+                                                                           test_data[expected_result_index],
+                                                                           result))
+
 if __name__ == "__main__": unittest.main()

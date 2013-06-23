@@ -162,3 +162,14 @@ class Sorter():
 
         return heap_list
 
+    def heap_sort(self, heap_list):
+        '''
+        argument heap_list is a max heap
+        returns a list sorted in ascending order
+        Could use Python sort() method instead. Wrote heap_sort as a learning exercise.
+
+        '''
+
+        # write simplest method to pass initial test
+        return heap_list
+
