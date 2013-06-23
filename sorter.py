@@ -130,7 +130,13 @@ class Sorter():
 
     def heapify(self, heap_list, start_index):
         '''
-        heap_list is a list that almost represents a max heap, but one node is wrong.
+        heapify starts searching at start_index and decrements index.
+        If heapify finds a node with a bigger child, it swaps the nodes.
+        To reduce time complexity, it then changes index to parent.
+        It does not explore other branches.
+
+        argument heap_list is a list that almost represents a max heap, but one node is wrong.
+
         returns a max heap list
 
         '''
@@ -150,9 +156,9 @@ class Sorter():
                 heap_list = self.list_elements_swapped(heap_list,
                                                        index,
                                                        biggest_child_index)
-                print('heap_list {}'.format(heap_list))
-                print('biggest_child_index {}'.format(biggest_child_index))
-                self.heapify(heap_list, biggest_child_index)
+
+                # skip other tree branches, move index to parent
+                index = parent_index
 
         return heap_list
 
