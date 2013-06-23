@@ -134,13 +134,19 @@ class Sorter():
         returns a max heap list
 
         '''
-        # range is exclusive
+        # decrement index
+        # range() is exclusive of end index
         for index in range(start_index, -1, -1):
 
             if self.node_has_a_bigger_child(heap_list, index):
                 print('heap_list {}'.format(heap_list))
                 print('index {}'.format(index))
+
+                parent_index = self.parent_index(heap_list, index)
+                print('parent_index {}'.format(parent_index))
                 biggest_child_index = self.index_of_biggest_child(heap_list, index)
+                print('biggest_child_index {}'.format(biggest_child_index))
+
                 heap_list = self.list_elements_swapped(heap_list,
                                                        index,
                                                        biggest_child_index)
