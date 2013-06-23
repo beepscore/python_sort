@@ -99,7 +99,9 @@ class Sorter():
 
         '''
         is_max_heap = True
-        for index, node_value in enumerate(heap_list):
+        # Iterate over non leaf nodes. Leaf nodes don't have children, don't need to check them.
+        # Python range() is exclusive of final value
+        for index in range(0, self.number_of_non_leaf_nodes(heap_list)):
             if self.node_has_a_bigger_child(heap_list, index):
                 is_max_heap = False
                 break
