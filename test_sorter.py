@@ -284,4 +284,9 @@ class TestSorter(unittest.TestCase):
                                                                              test_data[expected_result_index],
                                                                         result))
 
+            # this assertion is dependent upon is_max_heap()
+            self.assertTrue(self.sorter.is_max_heap(result),
+                             'heapify({}, {}) expected a max heap'.format(test_data[almost_heap_index],
+                                                                             test_data[list_index_index]))
+
 if __name__ == "__main__": unittest.main()
