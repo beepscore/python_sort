@@ -162,6 +162,32 @@ class Sorter():
 
         return heap_list
 
+    def heapify_down(self, heap_list):
+        '''
+        heapify_down starts at root
+        If heapify_down finds a node with a bigger child, it swaps the nodes.
+
+        argument heap_list is a list that almost represents a max heap, but root node is wrong.
+
+        returns a max heap list
+
+        '''
+        # range() is exclusive of end index
+        number_of_non_leaf_nodes = self.number_of_non_leaf_nodes(heap_list)
+        for index in range(0, number_of_non_leaf_nodes):
+
+            if self.node_has_a_bigger_child(heap_list, index):
+                biggest_child_index = self.index_of_biggest_child(heap_list, index)
+
+                heap_list = self.list_elements_swapped(heap_list,
+                                                       index,
+                                                       biggest_child_index)
+
+                # skip other tree branches, move index to biggest_child_index
+                index = biggest_child_index
+
+        return heap_list
+
     def heap_sort(self, heap_list):
         '''
         argument heap_list is a max heap
