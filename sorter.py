@@ -170,6 +170,15 @@ class Sorter():
 
         '''
 
-        # write simplest method to pass initial test
+        # sort in place
+        # partition list into 2 sections
+        # range(0, sorted_start_index) contains a max heap. range is exclusive.
+        # range(sorted_start_index, len(heap_list)) contains the sorted list.
+        heap_length = len(heap_list)
+        # In current heap swap root with last leaf node.
+        # Then adjust sorted_start_index
+        heap_list = self.list_elements_swapped(heap_list, 0, (heap_length - 1))
+
+
         return heap_list
 
