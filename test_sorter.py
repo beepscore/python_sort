@@ -250,7 +250,7 @@ class TestSorter(unittest.TestCase):
 
         almost_heap_index = 0
         # in test_datas, the index that contains the list_index
-        list_index_index = 1
+        start_index_index = 1
         expected_result_index = 2
 
         test_datas = [
@@ -276,17 +276,17 @@ class TestSorter(unittest.TestCase):
 
         for test_data in test_datas:
             result = self.sorter.heapify(test_data[almost_heap_index],
-                                         test_data[list_index_index])
+                                         test_data[start_index_index])
             self.assertEqual(test_data[expected_result_index],
                              result,
                              'heapify({}, {}) expected {} but got {}'.format(test_data[almost_heap_index],
-                                                                             test_data[list_index_index],
+                                                                             test_data[start_index_index],
                                                                              test_data[expected_result_index],
                                                                         result))
 
             # this assertion is dependent upon is_max_heap()
             self.assertTrue(self.sorter.is_max_heap(result),
                              'heapify({}, {}) expected a max heap'.format(test_data[almost_heap_index],
-                                                                             test_data[list_index_index]))
+                                                                             test_data[start_index_index]))
 
 if __name__ == "__main__": unittest.main()
