@@ -32,19 +32,19 @@ class Sorter():
     def __init__(self):
         pass
 
-    def number_of_non_leaf_nodes(self, heap_list):
+    def number_of_non_leaf_nodes(self, heap_length):
         '''
         returns number of nodes on levels above lowest level of heap_list tree.
-        if heap_list has one node, returns 1.
+        if heap_length equals one, returns 1.
 
         '''
         number_of_non_leaf_nodes = 0
-        if (None == heap_list) or ([] == heap_list):
+        if (None == heap_length) or (0 == heap_length):
             number_of_non_leaf_nodes = 0
         else:
             # number of levels in the heap tree
             # log2 requires Python 3.3
-            number_of_levels = int(math.log2(len(heap_list))) + 1
+            number_of_levels = int(math.log2(heap_length)) + 1
             number_of_non_leaf_nodes = ((2**(number_of_levels - 1)) - 1)
         return number_of_non_leaf_nodes
 
@@ -101,7 +101,7 @@ class Sorter():
         is_max_heap = True
         # Iterate over non leaf nodes. Leaf nodes don't have children, don't need to check them.
         # Python range() is exclusive of final value
-        for index in range(0, self.number_of_non_leaf_nodes(heap_list)):
+        for index in range(0, self.number_of_non_leaf_nodes(len(heap_list))):
             if self.node_has_a_bigger_child(heap_list, index):
                 is_max_heap = False
                 break
@@ -173,7 +173,7 @@ class Sorter():
 
         '''
         # range() is exclusive of end index
-        number_of_non_leaf_nodes = self.number_of_non_leaf_nodes(heap_list)
+        number_of_non_leaf_nodes = self.number_of_non_leaf_nodes(len(heap_list))
         for index in range(0, number_of_non_leaf_nodes):
 
             if self.node_has_a_bigger_child(heap_list, index):
