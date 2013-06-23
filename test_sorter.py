@@ -298,7 +298,8 @@ class TestSorter(unittest.TestCase):
             # one element
             [[5], [5]],
 
-            #[[2, 3, 1], [1, 2, 3]],
+            [[2, 1], [1, 2]],
+            [[3, 2, 1], [1, 2, 3]],
         ]
 
         for test_data in test_datas:
