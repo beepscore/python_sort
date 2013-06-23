@@ -128,17 +128,25 @@ class Sorter():
 
         return biggest_child_index;
 
-    def heapify(self, heap_list, index):
+    def heapify(self, heap_list, start_index):
         '''
         heap_list is a list that almost represents a max heap, but one node is wrong.
-        returns a list with node swapped
+        returns a max heap list
 
         '''
-        if ((len(heap_list) > 1) and
-            self.node_has_a_bigger_child(heap_list, index)):
-            self.list_elements_swapped(heap_list,
-                                       index,
-                                       self.index_of_biggest_child(heap_list, index))
+        # range is exclusive
+        for index in range(start_index, -1, -1):
+
+            if self.node_has_a_bigger_child(heap_list, index):
+                print('heap_list {}'.format(heap_list))
+                print('index {}'.format(index))
+                biggest_child_index = self.index_of_biggest_child(heap_list, index)
+                heap_list = self.list_elements_swapped(heap_list,
+                                                       index,
+                                                       biggest_child_index)
+                print('heap_list {}'.format(heap_list))
+                print('biggest_child_index {}'.format(biggest_child_index))
+                self.heapify(heap_list, biggest_child_index)
 
         return heap_list
 
