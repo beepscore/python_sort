@@ -136,3 +136,23 @@ class PartitionedHeapList():
         else:
             return False;
 
+    def index_of_biggest_child(self, index):
+        left_child_index = self.left_child_index(index)
+        right_child_index = self.right_child_index(index)
+
+        biggest_child_index = None
+        if (not left_child_index and not right_child_index):
+            biggest_child_index = None
+        elif (left_child_index and not right_child_index):
+            biggest_child_index = left_child_index
+        elif (right_child_index and not left_child_index):
+            biggest_child_index = right_child_index
+        else:
+            # index has two children
+            if (self.partitioned_list[left_child_index] > self.partitioned_list[right_child_index]):
+                biggest_child_index = left_child_index
+            else:
+                biggest_child_index = right_child_index
+
+        return biggest_child_index;
+
