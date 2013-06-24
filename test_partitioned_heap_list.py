@@ -219,9 +219,9 @@ class TestPartitionedHeapList(unittest.TestCase):
         ]
 
         for test_data in test_datas:
-            # using setters instead of init raises assertion error when list is []
-            #self.partitioned_heap_list.partitioned_list = test_data[list_index]
+            # if list is empty, this attempts to set heap_end_index < 0 and throws assertion error.
             #self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
+            # Instead use initializer, it will set heap_end_index 0
             self.partitioned_heap_list = partitioned_heap_list.PartitionedHeapList(test_data[list_index], (len(test_data[list_index])-1))
 
             result = self.partitioned_heap_list.is_max_heap()
