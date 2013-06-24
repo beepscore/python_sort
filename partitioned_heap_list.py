@@ -42,7 +42,7 @@ class PartitionedHeapList():
 
         # protect against instantiating out of bounds
         if ([] == partitioned_list):
-            self._heap_end_index = 0
+            self._heap_end_index = -1
         else:
             assert(heap_end_index >= 0)
             assert(heap_end_index < len(self.partitioned_list))
@@ -57,11 +57,16 @@ class PartitionedHeapList():
     partitioned_list = property (get_partitioned_list, set_partitioned_list)
 
     def get_heap_end_index(self):
+        '''
+        returns heap_end_index
+        -1 indicates heap partition is empty, and partitioned_list is either empty or completely sorted.
+
+        '''
         return self._heap_end_index
 
     def set_heap_end_index(self, heap_end_index):
         # protect against assigning out of bounds
-        assert(heap_end_index >= 0)
+        assert(heap_end_index >= -1)
         assert(heap_end_index < len(self.partitioned_list))
         self._heap_end_index = heap_end_index
 
@@ -74,7 +79,7 @@ class PartitionedHeapList():
 
         '''
         number_of_non_leaf_nodes = 0
-        if (None == self.partitioned_list) or ([] == self.partitioned_list):
+        if (None == self.partitioned_list) or ([] == self.partitioned_list) or (-1 >= self.heap_end_index):
             number_of_non_leaf_nodes = 0
         else:
             # number of levels in the heap tree
