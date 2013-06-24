@@ -136,6 +136,21 @@ class PartitionedHeapList():
         else:
             return False;
 
+    def is_max_heap(self):
+        '''
+        returns True if heap partition is a max heap.
+
+        '''
+        is_max_heap = True
+        # Iterate over non leaf nodes. Leaf nodes don't have children, don't need to check them.
+        # Python range() is exclusive of final value
+        for index in range(0, self.number_of_non_leaf_nodes()):
+            if self.node_has_a_bigger_child(index):
+                is_max_heap = False
+                break
+
+        return is_max_heap
+
     def index_of_biggest_child(self, index):
         left_child_index = self.left_child_index(index)
         right_child_index = self.right_child_index(index)
