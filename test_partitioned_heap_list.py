@@ -258,4 +258,42 @@ class TestPartitionedHeapList(unittest.TestCase):
                                                                                                             test_data[expected_result_index],
                                                                                                             result))
 
+    def test_heapify_down(self):
+
+        list_index = 0
+        expected_result_index = 1
+
+        # Can check test_datas by hand drawing heap trees
+        test_datas = [
+            # heap is a max heap, needs no swaps.
+            [[5], [5]],
+            [[88, 55, 66, 44, 22, 11, 3], [88, 55, 66, 44, 22, 11, 3]],
+
+            # heap needs root node swapped down 1 level
+            [[2, 3, 1], [3, 2, 1]],
+            [[55, 88, 66, 44, 22, 11, 3], [88, 55, 66, 44, 22, 11, 3]],
+
+            # heap needs root node swapped down 2 levels
+            [[33, 88, 66, 44, 22, 11, 3], [88, 44, 66, 33, 22, 11, 3]],
+            [[48, 99, 88, 66, 77, 55, 44, 22, 33, 12, 8], [99, 77, 88, 66, 48, 55, 44, 22, 33, 12, 8]],
+
+            # heap needs root node swapped down 3 levels
+            [[7, 99, 88, 66, 77, 55, 44, 22, 33, 12, 8], [99, 77, 88, 66, 12, 55, 44, 22, 33, 7, 8]],
+        ]
+
+        for test_data in test_datas:
+            self.partitioned_heap_list.partitioned_list = test_data[list_index]
+            self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
+            self.partitioned_heap_list.heapify_down()
+            result = self.partitioned_heap_list.partitioned_list
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'partitioned_list {} heapify_down() expected {} but got {}'.format(test_data[list_index],
+                                                                                  test_data[expected_result_index],
+                                                                                  result))
+
+            # this assertion is dependent upon is_max_heap()
+            self.assertTrue(self.partitioned_heap_list.is_max_heap(),
+                             'partitioned_list {} heapify_down() expected a max heap'.format(test_data[list_index]))
+
 if __name__ == "__main__": unittest.main()
