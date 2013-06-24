@@ -194,3 +194,19 @@ class PartitionedHeapList():
                 # skip other tree branches, move index to biggest_child_index
                 index = biggest_child_index
 
+    def heap_sort(self):
+        '''
+        heap_sort repeatedly pulls root node from max heap and adds it to sorted list.
+        When the method finishes, heap_end_index is -1, indicating heap is empty
+        Could use Python sort() method instead. Wrote heap_sort as a learning exercise.
+
+        '''
+
+        # sort in place
+
+        while self.heap_end_index >= 0:
+            # In current heap swap root with last leaf node.
+            self.swap_list_elements(0, self.heap_end_index)
+            # Decrement heap_end_index to move partition and add swapped element to sorted list.
+            self.heap_end_index -= 1
+            self.heapify_down()

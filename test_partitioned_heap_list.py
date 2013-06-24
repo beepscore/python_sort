@@ -296,4 +296,30 @@ class TestPartitionedHeapList(unittest.TestCase):
             self.assertTrue(self.partitioned_heap_list.is_max_heap(),
                              'partitioned_list {} heapify_down() expected a max heap'.format(test_data[list_index]))
 
+    def test_heap_sort(self):
+
+        list_index = 0
+        expected_result_index = 1
+
+        test_datas = [
+            # one element
+            [[5], [5]],
+
+            [[2, 1], [1, 2]],
+            [[3, 2, 1], [1, 2, 3]],
+            [[88, 55, 66, 44, 22, 11, 3], [3, 11, 22, 44, 55, 66, 88]],
+            [[99, 77, 88, 66, 12, 55, 44, 22, 33, 7, 8], [7, 8, 12, 22, 33, 44, 55, 66, 77, 88, 99]],
+        ]
+
+        for test_data in test_datas:
+            self.partitioned_heap_list.partitioned_list = test_data[list_index]
+            self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
+            self.partitioned_heap_list.heap_sort()
+            result = self.partitioned_heap_list.partitioned_list
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'partitioned_list {} heap_sort() expected {} but got {}'.format(test_data[list_index],
+                                                                                             test_data[expected_result_index],
+                                                                                             result))
+
 if __name__ == "__main__": unittest.main()
