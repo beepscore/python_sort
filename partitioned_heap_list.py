@@ -104,3 +104,11 @@ class PartitionedHeapList():
             parent_index = (index - 1)//2
         return parent_index
 
+    def swap_list_elements(self, indexA, indexB):
+        '''
+        swaps elements in partitioned_list
+
+        '''
+        # Python can swap in one step
+        self.partitioned_list[indexA], self.partitioned_list[indexB] = self.partitioned_list[indexB], self.partitioned_list[indexA]
+

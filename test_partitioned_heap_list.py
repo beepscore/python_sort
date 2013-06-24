@@ -136,4 +136,33 @@ class TestPartitionedHeapList(unittest.TestCase):
                                                                                                   test_data[expected_result_index],
                                                                                                   result))
 
+    def test_swap_list_elements(self):
+
+        list_index = 0
+        indexA_index = 1
+        indexB_index = 2
+        expected_result_index = 3
+
+        test_datas = [
+            # swap an element with itself
+            [[23, 38, 35, 10, 20, 17, 12], 0, 0, [23, 38, 35, 10, 20, 17, 12]],
+
+            [[23, 38, 35, 10, 20, 17, 12], 0, 1, [38, 23, 35, 10, 20, 17, 12]],
+            [[23, 38, 35, 10, 20, 17, 12], 0, 2, [35, 38, 23, 10, 20, 17, 12]],
+            [[23, 38, 35, 10, 20, 17, 12], 3, 6, [23, 38, 35, 12, 20, 17, 10]],
+        ]
+
+        for test_data in test_datas:
+            self.partitioned_heap_list.partitioned_list = test_data[list_index]
+            self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
+            self.partitioned_heap_list.swap_list_elements(test_data[indexA_index], test_data[indexB_index])
+            result = self.partitioned_heap_list.partitioned_list
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'partitioned_list {} swap_list_elements({}, {}) expected {} but got {}'.format(test_data[list_index],
+                                                                                               test_data[indexA_index],
+                                                                                               test_data[indexB_index],
+                                                                                               test_data[expected_result_index],
+                                                                                               result))
+
 if __name__ == "__main__": unittest.main()
