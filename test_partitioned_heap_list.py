@@ -296,6 +296,51 @@ class TestPartitionedHeapList(unittest.TestCase):
             self.assertTrue(self.partitioned_heap_list.is_max_heap(),
                              'partitioned_list {} heapify_down() expected a max heap'.format(test_data[list_index]))
 
+    def test_heapify_up(self):
+
+        list_index = 0
+        # in test_datas, the index that contains the start_index
+        start_index_index = 1
+        expected_result_index = 2
+
+        test_datas = [
+            # one element
+            [[5], 0, [5]],
+            # heap needs one swap
+            [[2, 3, 1], 0, [3, 2, 1]],
+            [[23, 78, 65, 10, 20, 17, 12], 2, [78, 23, 65, 10, 20, 17, 12]],
+            [[78, 43, 65, 10, 57, 37, 12], 2, [78, 57, 65, 10, 43, 37, 12]],
+            [[76, 62, 52, 44, 32, 23, 58], 2, [76, 62, 58, 44, 32, 23, 52]],
+
+            # heap needs one element swapped up 2 levels
+            [[76, 62, 58, 44, 32, 23, 98], 2, [98, 62, 76, 44, 32, 23, 58]],
+
+            # heap needs 2 elements swapped, heapify_up doesn't handle this
+            #[[12, 25, 35, 10, 23, 17, 38], 2, [38, 25, 35, 10, 35, 17, 23]],
+
+            # heap is a max heap, needs no swaps.
+            [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
+            [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
+            [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
+        ]
+
+        for test_data in test_datas:
+            self.partitioned_heap_list.partitioned_list = test_data[list_index]
+            self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
+            self.partitioned_heap_list.heapify_up(test_data[start_index_index])
+            result = self.partitioned_heap_list.partitioned_list
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'partitioned_list {} heapify_up({}) expected {} but got {}'.format(test_data[list_index],
+                                                                                  test_data[start_index_index],
+                                                                                  test_data[expected_result_index],
+                                                                                  result))
+
+            # this assertion is dependent upon is_max_heap()
+            self.assertTrue(self.partitioned_heap_list.is_max_heap(),
+                             'partitioned_list {} heapify_up({}) expected a max heap'.format(test_data[list_index],
+                                                                                             test_data[start_index_index]))
+
     def test_heap_sort(self):
 
         list_index = 0

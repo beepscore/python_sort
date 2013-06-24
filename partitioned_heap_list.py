@@ -176,6 +176,27 @@ class PartitionedHeapList():
 
         return biggest_child_index;
 
+    def heapify_up(self, start_index):
+        '''
+        heapify_up starts searching at start_index and decrements index.
+        If heapify_up finds a node with a bigger child, it swaps the nodes.
+        To reduce time complexity, it then changes index to parent.
+        It does not explore other branches.
+
+        partitioned_list almost represents a max heap, but root node is wrong.
+
+        '''
+        # decrement index
+        # range() is exclusive of end index
+        for index in range(start_index, -1, -1):
+
+            if self.node_has_a_bigger_child(index):
+                parent_index = self.parent_index(index)
+                biggest_child_index = self.index_of_biggest_child(index)
+                self.swap_list_elements(index, biggest_child_index)
+                # skip other tree branches, move index to parent
+                index = parent_index
+
     def heapify_down(self):
         '''
         heapify_down starts at root
