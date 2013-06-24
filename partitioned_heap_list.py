@@ -85,3 +85,22 @@ class PartitionedHeapList():
 
         return number_of_non_leaf_nodes
 
+    def right_child_index(self, index):
+        right_index = None
+        if (index != None) and (self.heap_end_index >= (2*index + 2)):
+            right_index = (2*index + 2)
+        return right_index
+
+    def left_child_index(self, index):
+        left_index = None
+        if (index != None) and (self.heap_end_index >= (2*index + 1)):
+            left_index = (2*index + 1)
+        return left_index
+
+    def parent_index(self, index):
+        parent_index = None
+        if (index != None) and (index > 0) and (index <= self.heap_end_index):
+            # use integer division to truncate
+            parent_index = (index - 1)//2
+        return parent_index
+
