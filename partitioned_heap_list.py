@@ -122,3 +122,17 @@ class PartitionedHeapList():
         # Python can swap in one step
         self.partitioned_list[indexA], self.partitioned_list[indexB] = self.partitioned_list[indexB], self.partitioned_list[indexA]
 
+    def node_has_a_bigger_child(self, index):
+        '''
+        returns True if node at index has a bigger child
+
+        '''
+        left_child_index = self.left_child_index(index)
+        right_child_index = self.right_child_index(index)
+
+        if ((left_child_index and (self.partitioned_list[index] < self.partitioned_list[left_child_index])) or
+            (right_child_index and (self.partitioned_list[index] < self.partitioned_list[right_child_index]))):
+            return True;
+        else:
+            return False;
+

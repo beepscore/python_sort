@@ -165,4 +165,30 @@ class TestPartitionedHeapList(unittest.TestCase):
                                                                                                test_data[expected_result_index],
                                                                                                result))
 
+    def test_node_has_a_bigger_child(self):
+
+        list_index = 0
+        # in test_datas, the index that contains the list_index
+        list_index_index = 1
+        expected_result_index = 2
+
+        test_datas = [
+            [[23], 0, False],
+            [[23, 38, 35, 10, 20, 17, 12], 0, True],
+            [[23, 38, 35, 10, 20, 17, 12], 1, False],
+            [[23, 38, 35, 10, 20, 17, 12], 2, False],
+            [[49, 38, 35, 10, 20, 37], 2, True],
+        ]
+
+        for test_data in test_datas:
+            self.partitioned_heap_list.partitioned_list = test_data[list_index]
+            self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
+            result = self.partitioned_heap_list.node_has_a_bigger_child(test_data[list_index_index])
+            self.assertEqual(test_data[expected_result_index],
+                             result,
+                             'partitioned_list {} node_has_a_bigger_child({}) expected {} but got {}'.format(test_data[list_index],
+                                                                                                             test_data[list_index_index],
+                                                                                                             test_data[expected_result_index],
+                                                                                                             result))
+
 if __name__ == "__main__": unittest.main()
