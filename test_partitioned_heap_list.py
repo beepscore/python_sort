@@ -311,6 +311,9 @@ class TestPartitionedHeapList(unittest.TestCase):
             [[99, 77, 88, 66, 12, 55, 44, 22, 33, 7, 8], [7, 8, 12, 22, 33, 44, 55, 66, 77, 88, 99]],
         ]
 
+        # expected heap_end_index after heap_sort finishes
+        expected_heap_end_index = -1
+
         for test_data in test_datas:
             self.partitioned_heap_list.partitioned_list = test_data[list_index]
             self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
@@ -321,5 +324,9 @@ class TestPartitionedHeapList(unittest.TestCase):
                              'partitioned_list {} heap_sort() expected {} but got {}'.format(test_data[list_index],
                                                                                              test_data[expected_result_index],
                                                                                              result))
+
+
+            self.assertEqual(expected_heap_end_index, self.partitioned_heap_list.heap_end_index,
+                             'partitioned_list {} heap_sort() expected heap_end_index == {}'.format(test_data[list_index], expected_heap_end_index))
 
 if __name__ == "__main__": unittest.main()
