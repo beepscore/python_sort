@@ -320,8 +320,6 @@ class TestPartitionedHeapList(unittest.TestCase):
 
             # heap is a max heap, needs no swaps.
             [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
-            [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
-            [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
         ]
 
         for test_data in test_datas:
