@@ -304,8 +304,11 @@ class TestPartitionedHeapList(unittest.TestCase):
         expected_result_index = 2
 
         test_datas = [
+            # heap is a max heap, needs no swaps.
             # one element
             [[5], 0, [5]],
+            [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
+
             # heap needs one swap
             [[2, 3, 1], 0, [3, 2, 1]],
             [[23, 78, 65, 10, 20, 17, 12], 2, [78, 23, 65, 10, 20, 17, 12]],
@@ -317,9 +320,6 @@ class TestPartitionedHeapList(unittest.TestCase):
 
             # heap needs 2 elements swapped, heapify_up doesn't handle this
             #[[12, 25, 35, 10, 23, 17, 38], 2, [38, 25, 35, 10, 35, 17, 23]],
-
-            # heap is a max heap, needs no swaps.
-            [[38, 23, 35, 10, 20, 17, 12], 2, [38, 23, 35, 10, 20, 17, 12]],
         ]
 
         for test_data in test_datas:
