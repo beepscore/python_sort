@@ -191,16 +191,21 @@ class PartitionedHeapList():
         partitioned_list almost represents a max heap, but root node is wrong.
 
         '''
-        # decrement index
-        # range() is exclusive of end index
-        for index in range(start_index, -1, -1):
 
+        print('partitioned_list', self.partitioned_list)
+        index = start_index
+        while index != None and index >= 0:
+
+            print('index', index,'node_has_a_bigger_child', self.node_has_a_bigger_child(index))
             if self.node_has_a_bigger_child(index):
-                parent_index = self.parent_index(index)
                 biggest_child_index = self.index_of_biggest_child(index)
+                print('biggest_child_index', biggest_child_index)
                 self.swap_list_elements(index, biggest_child_index)
                 # skip other tree branches, move index to parent
-                index = parent_index
+                index = self.parent_index(index)
+            else:
+                print('returning')
+                return
 
     def sift_down(self, start_index):
         '''
