@@ -35,6 +35,7 @@ class PartitionedHeapList():
     A[2i+2] right child
 
     References
+    https://en.wikipedia.org/wiki/Heapsort
     https://en.wikipedia.org/wiki/Heap_(data_structure)
     http://stackoverflow.com/questions/8954564/binary-heap-how-and-when-to-use-max-heapify?rq=1
     http://stackoverflow.com/questions/8130177/am-i-implementing-the-heapify-algorithm-correctly?rq=1
@@ -238,7 +239,7 @@ class PartitionedHeapList():
         heapify_up starts at root and increments to last leaf node
         This method is less efficient than heapifying down with heapify().
         Reference
-        https://en.wikipedia.org/wiki/Heap_(data_structure)
+        https://en.wikipedia.org/wiki/Heapsort
 
         '''
         # increment index
