@@ -408,7 +408,7 @@ class TestPartitionedHeapList(unittest.TestCase):
             [[12, 25, 35, 10, 23, 17, 38], [38, 25, 35, 10, 23, 17, 12]],
 
             # list is ascending, needs all but one element swapped
-            #[[10, 20, 30, 40, 50, 60, 70], [70, 30, 50, 40, 20, 60, 10]],
+            # TODO: fix heapify_up() to pass this test
             [[10, 20, 30, 40, 50, 60, 70], [70, 50, 60, 40, 20, 10, 30]],
         ]
 
