@@ -34,6 +34,10 @@ class PartitionedHeapList():
     A[2i+1] left child
     A[2i+2] right child
 
+    References
+    http://stackoverflow.com/questions/8954564/binary-heap-how-and-when-to-use-max-heapify?rq=1
+    http://stackoverflow.com/questions/8130177/am-i-implementing-the-heapify-algorithm-correctly?rq=1
+
     '''
 
     def __init__(self, partitioned_list = [], heap_end_index = 0):
