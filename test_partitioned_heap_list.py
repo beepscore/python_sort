@@ -258,7 +258,7 @@ class TestPartitionedHeapList(unittest.TestCase):
                                                                                                             test_data[expected_result_index],
                                                                                                             result))
 
-    def test_heapify_down(self):
+    def test_sift_down(self):
 
         list_index = 0
         start_index_index = 1
@@ -285,18 +285,18 @@ class TestPartitionedHeapList(unittest.TestCase):
         for test_data in test_datas:
             self.partitioned_heap_list.partitioned_list = test_data[list_index]
             self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
-            self.partitioned_heap_list.heapify_down(test_data[start_index_index])
+            self.partitioned_heap_list.sift_down(test_data[start_index_index])
             result = self.partitioned_heap_list.partitioned_list
             self.assertEqual(test_data[expected_result_index],
                              result,
-                             'partitioned_list {} heapify_down({}) expected {} but got {}'.format(test_data[list_index],
+                             'partitioned_list {} sift_down({}) expected {} but got {}'.format(test_data[list_index],
                                                                                   test_data[start_index_index],
                                                                                   test_data[expected_result_index],
                                                                                   result))
 
             # this assertion is dependent upon is_max_heap()
             self.assertTrue(self.partitioned_heap_list.is_max_heap(),
-                             'partitioned_list {} heapify_down({}) expected a max heap'.format(test_data[list_index],
+                             'partitioned_list {} sift_down({}) expected a max heap'.format(test_data[list_index],
                                                                                                test_data[start_index_index]))
 
     def test_heapify_up(self):

@@ -202,9 +202,9 @@ class PartitionedHeapList():
                 # skip other tree branches, move index to parent
                 index = parent_index
 
-    def heapify_down(self, start_index):
+    def sift_down(self, start_index):
         '''
-        heapify_down starts at start_index
+        sift_down starts at start_index
         If the node has a bigger child, it swaps the nodes and moves downward to swapped index.
         It loops until node doesn't have a bigger child.
         It does not explore other branches.
@@ -237,4 +237,4 @@ class PartitionedHeapList():
             self.swap_list_elements(0, self.heap_end_index)
             # Decrement heap_end_index to move partition and add swapped element to sorted list.
             self.heap_end_index -= 1
-            self.heapify_down(0)
+            self.sift_down(0)
