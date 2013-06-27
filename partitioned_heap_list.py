@@ -192,20 +192,16 @@ class PartitionedHeapList():
 
         '''
 
-        print('partitioned_list', self.partitioned_list)
         index = start_index
         while index != None and index >= 0:
 
-            print('index', index,'node_has_a_bigger_child', self.node_has_a_bigger_child(index))
             if self.node_has_a_bigger_child(index):
                 biggest_child_index = self.index_of_biggest_child(index)
-                print('biggest_child_index', biggest_child_index)
                 self.swap_list_elements(index, biggest_child_index)
                 # skip other tree branches, move index to parent
                 index = self.parent_index(index)
             else:
-                print('returning')
-                return
+                index -= 1
 
     def sift_down(self, start_index):
         '''
