@@ -201,17 +201,19 @@ class PartitionedHeapList():
                 # skip other tree branches, move index to parent
                 index = parent_index
 
-    def heapify_down(self):
+    def heapify_down(self, start_index):
         '''
-        heapify_down starts at root
+        heapify_down starts at start_index
         If heapify_down finds a node with a bigger child, it swaps the nodes.
+        To reduce time complexity, it then changes index to biggest_child_index.
+        It does not explore other branches.
 
         partitioned_list almost represents a max heap, but root node is wrong.
 
         '''
         # range() is exclusive of end index
         number_of_non_leaf_nodes = self.number_of_non_leaf_nodes()
-        for index in range(0, number_of_non_leaf_nodes):
+        for index in range(start_index, number_of_non_leaf_nodes):
 
             if self.node_has_a_bigger_child(index):
                 biggest_child_index = self.index_of_biggest_child(index)
@@ -234,4 +236,4 @@ class PartitionedHeapList():
             self.swap_list_elements(0, self.heap_end_index)
             # Decrement heap_end_index to move partition and add swapped element to sorted list.
             self.heap_end_index -= 1
-            self.heapify_down()
+            self.heapify_down(0)
