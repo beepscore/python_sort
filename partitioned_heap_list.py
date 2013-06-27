@@ -237,6 +237,20 @@ class PartitionedHeapList():
         for index in range(start_index, -1, -1):
                 self.sift_down(index)
 
+    def heapify_up(self):
+        '''
+        heapify_up starts at root and increments to last leaf node
+        This method is less efficient than heapifying down with heapify().
+        Reference
+        https://en.wikipedia.org/wiki/Heap_(data_structure)
+
+        '''
+        # increment index
+        # range() is exclusive of end index
+        number_of_non_leaf_nodes = self.number_of_non_leaf_nodes()
+        for index in range(0, number_of_non_leaf_nodes):
+                self.sift_up(index)
+
     def heap_sort(self):
         '''
         heap_sort sorts in place, repeatedly pulling root node from max heap and adding it to sorted list.
