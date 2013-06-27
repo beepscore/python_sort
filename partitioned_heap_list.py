@@ -222,6 +222,16 @@ class PartitionedHeapList():
             else:
                 return
 
+    def heapify(self, start_index):
+        '''
+        heapify starts searching at start_index.
+
+        '''
+        # decrement index
+        # range() is exclusive of end index
+        for index in range(start_index, -1, -1):
+                self.sift_down(index)
+
     def heap_sort(self):
         '''
         heap_sort sorts in place, repeatedly pulling root node from max heap and adding it to sorted list.
