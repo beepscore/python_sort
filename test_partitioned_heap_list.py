@@ -362,6 +362,9 @@ class TestPartitionedHeapList(unittest.TestCase):
 
             # heap needs 2 elements swapped
             [[12, 25, 35, 10, 23, 17, 38], 2, [38, 25, 35, 10, 23, 17, 12]],
+
+            # list is ascending, needs all but one element swapped
+            [[10, 20, 30, 40, 50, 60, 70], 2, [70, 50, 60, 40, 20, 10, 30]],
         ]
 
         for test_data in test_datas:
