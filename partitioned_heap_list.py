@@ -246,6 +246,7 @@ class PartitionedHeapList():
         # range() is exclusive of end index
         number_of_non_leaf_nodes = self.number_of_non_leaf_nodes()
         for index in range(0, number_of_non_leaf_nodes):
+                print('index {} partitioned_list {}'.format(index, self.partitioned_list))
                 self.sift_up(index)
 
     def heap_sort(self):
