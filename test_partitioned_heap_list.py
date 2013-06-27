@@ -317,9 +317,6 @@ class TestPartitionedHeapList(unittest.TestCase):
 
             # heap needs one element swapped up 2 levels
             [[76, 62, 58, 44, 32, 23, 98], 2, [98, 62, 76, 44, 32, 23, 58]],
-
-            # heap needs 2 elements swapped, heapify_up doesn't handle this
-            #[[12, 25, 35, 10, 23, 17, 38], 2, [38, 25, 35, 10, 35, 17, 23]],
         ]
 
         for test_data in test_datas:
