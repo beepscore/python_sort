@@ -35,6 +35,7 @@ class PartitionedHeapList():
     A[2i+2] right child
 
     References
+    https://en.wikipedia.org/wiki/Heap_(data_structure)
     http://stackoverflow.com/questions/8954564/binary-heap-how-and-when-to-use-max-heapify?rq=1
     http://stackoverflow.com/questions/8130177/am-i-implementing-the-heapify-algorithm-correctly?rq=1
 
@@ -204,22 +205,22 @@ class PartitionedHeapList():
     def heapify_down(self, start_index):
         '''
         heapify_down starts at start_index
-        If heapify_down finds a node with a bigger child, it swaps the nodes.
-        To reduce time complexity, it then changes index to biggest_child_index.
+        If the node has a bigger child, it swaps the nodes and moves downward to swapped index.
+        It loops until node doesn't have a bigger child.
         It does not explore other branches.
 
-        partitioned_list almost represents a max heap, but root node is wrong.
-
         '''
-        # range() is exclusive of end index
+        index = start_index
         number_of_non_leaf_nodes = self.number_of_non_leaf_nodes()
-        for index in range(start_index, number_of_non_leaf_nodes):
 
+        while index < number_of_non_leaf_nodes:
             if self.node_has_a_bigger_child(index):
                 biggest_child_index = self.index_of_biggest_child(index)
                 self.swap_list_elements(index, biggest_child_index)
                 # skip other tree branches, move index to biggest_child_index
                 index = biggest_child_index
+            else:
+                return
 
     def heap_sort(self):
         '''
