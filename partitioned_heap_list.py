@@ -2,22 +2,27 @@
 
 import math
 
+
 class PartitionedHeapList():
     '''
 
     Properties:
-    # partitioned_list is a Python list (an array).
-    # heap_end_index partitions partitioned_list into 2 sections, a max heap and a sorted list.
+    partitioned_list is a Python list (an array).
+    heap_end_index partitions partitioned_list into 2 sections,
+    a max heap and a sorted list.
 
-    The max heap occupies range(0, (heap_end_index+1)). range is exclusive of second argument.
+    The max heap occupies range(0, (heap_end_index+1)).
+    range is exclusive of second argument.
 
     The sorted list occupies range((heap_end_index+1), len(partitioned_list)).
     The sorted list is sorted in ascending order.
 
-    This class could be written in a more object oriented way e.g. heapA.nodeB.left_child().
+    This class could be written in a more object oriented way
+    e.g. heapA.nodeB.left_child().
     Instead use a Python list to allow for easier conversion to other mappings.
 
-    max_heap represents a heap by mapping array indices to node positions from top to bottom, left to right
+    max_heap represents a heap by mapping array indices to node positions
+    from top to bottom, left to right
 
                 0
               /   \
@@ -42,7 +47,7 @@ class PartitionedHeapList():
 
     '''
 
-    def __init__(self, partitioned_list = [], heap_end_index = 0):
+    def __init__(self, partitioned_list=[], heap_end_index=0):
 
         self._partitioned_list = partitioned_list
 
@@ -60,12 +65,13 @@ class PartitionedHeapList():
     def set_partitioned_list(self, partitioned_list):
         self._partitioned_list = partitioned_list
 
-    partitioned_list = property (get_partitioned_list, set_partitioned_list)
+    partitioned_list = property(get_partitioned_list, set_partitioned_list)
 
     def get_heap_end_index(self):
         '''
         returns heap_end_index
-        -1 indicates heap partition is empty, and partitioned_list is either empty or completely sorted.
+        -1 indicates heap partition is empty,
+        and partitioned_list is either empty or completely sorted.
 
         '''
         return self._heap_end_index
@@ -76,7 +82,7 @@ class PartitionedHeapList():
         assert(heap_end_index < len(self.partitioned_list))
         self._heap_end_index = heap_end_index
 
-    heap_end_index = property (get_heap_end_index, set_heap_end_index)
+    heap_end_index = property(get_heap_end_index, set_heap_end_index)
 
     def number_of_non_leaf_nodes(self):
         '''
@@ -110,7 +116,8 @@ class PartitionedHeapList():
     def left_child_index(self, index):
         '''
         returns index of left child node
-        if index doesn't have a left child within the max heap partition, returns None
+        returns None if index doesn't have a left child
+        within the max heap partition
 
         '''
         left_index = None
@@ -143,9 +150,9 @@ class PartitionedHeapList():
 
         if ((left_child_index and (self.partitioned_list[index] < self.partitioned_list[left_child_index])) or
             (right_child_index and (self.partitioned_list[index] < self.partitioned_list[right_child_index]))):
-            return True;
+            return True
         else:
-            return False;
+            return False
 
     def is_max_heap(self):
         '''
@@ -180,7 +187,7 @@ class PartitionedHeapList():
             else:
                 biggest_child_index = right_child_index
 
-        return biggest_child_index;
+        return biggest_child_index
 
     def sift_up(self, start_index):
         '''
