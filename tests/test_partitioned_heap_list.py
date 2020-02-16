@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import partitioned_heap_list
+from python_sort import partitioned_heap_list
 import unittest
 
 
@@ -29,7 +29,7 @@ class TestPartitionedHeapList(unittest.TestCase):
         ]
 
         for test_data in test_datas:
-            self.partitioned_heap_list = partitioned_heap_list.PartitionedHeapList(test_data[list_index], (len(test_data[list_index])-1))
+            self.partitioned_heap_list = partitioned_heap_list.PartitionedHeapList(test_data[list_index], (len(test_data[list_index]) - 1))
             result = self.partitioned_heap_list.number_of_non_leaf_nodes()
             self.assertEqual(test_data[expected_result_index],
                              result,
@@ -223,7 +223,7 @@ class TestPartitionedHeapList(unittest.TestCase):
             # if list is empty, this attempts to set heap_end_index < 0 and throws assertion error.
             #self.partitioned_heap_list.heap_end_index = len(test_data[list_index]) - 1
             # Instead use initializer, it will set heap_end_index 0
-            self.partitioned_heap_list = partitioned_heap_list.PartitionedHeapList(test_data[list_index], (len(test_data[list_index])-1))
+            self.partitioned_heap_list = partitioned_heap_list.PartitionedHeapList(test_data[list_index], (len(test_data[list_index]) - 1))
 
             result = self.partitioned_heap_list.is_max_heap()
             self.assertEqual(test_data[expected_result_index],
